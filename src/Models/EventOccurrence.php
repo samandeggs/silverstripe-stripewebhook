@@ -6,6 +6,7 @@ use SilverStripe\ORM\DataObject;
 
 /**
  * Class EventOccurrence
+ *
  * @package Vulcan\StripeWebhook
  *
  * @property string EventID

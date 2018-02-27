@@ -7,6 +7,7 @@ use Stripe\Event;
 
 /**
  * Class StripeEventHandler
+ *
  * @package Vulcan\StripeWebhook\Handlers
  */
 abstract class StripeEventHandler
@@ -18,7 +19,7 @@ abstract class StripeEventHandler
      * array, or a string. If handling multiple you should check what $event is in your {@link ::handle()} override
      *
      * @config
-     * @var array
+     * @var    array
      */
     private static $events = null;
 
@@ -26,7 +27,7 @@ abstract class StripeEventHandler
      * You should override this method in your subclass and create any functionality you need
      * to handle the data from the event
      *
-     * @param       $event
+     * @param $event
      * @param Event $data
      *
      * @return string

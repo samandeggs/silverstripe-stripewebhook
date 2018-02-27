@@ -1,4 +1,4 @@
-Vulcan\StripeWebhook\Models\EventOccurence:
+Vulcan\StripeWebhook\Models\EventOccurrence:
   first:
     EventID: evt_00000000000000
     Type: customer.created

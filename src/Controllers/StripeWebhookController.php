@@ -16,7 +16,11 @@ class StripeWebhookController extends Controller
         'index'
     ];
 
-    /** @var StripeWebhook */
+    /**
+     * 
+     *
+     * @var StripeWebhook 
+     */
     protected $client;
 
     public function init()
@@ -99,7 +103,11 @@ class StripeWebhookController extends Controller
 
 
         $responses = [];
-        /** @var StripeEventHandler $class */
+        /**
+* 
+         *
+ * @var StripeEventHandler $class 
+*/
         foreach ($handlers[$event->type] as $class) {
             $response = $class::handle($event->type, $event);
             $responses[] = $class . ':' . $response ?: "NULL";

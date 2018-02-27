@@ -59,7 +59,11 @@ class StripeWebhook implements Flushable
      */
     public function getHandlers()
     {
-        /** @var CacheInterface $cache */
+        /**
+* 
+         *
+ * @var CacheInterface $cache 
+*/
         $cache = Injector::inst()->get(CacheInterface::class . '.stripeWebhook');
 
         if ($manifest = $cache->get('eventHandlers')) {
@@ -69,7 +73,11 @@ class StripeWebhook implements Flushable
         $classes = ClassInfo::subclassesFor(StripeEventHandler::class);
         $manifest = [];
 
-        /** @var StripeEventHandler $class */
+        /**
+* 
+         *
+ * @var StripeEventHandler $class 
+*/
         foreach ($classes as $class) {
             if ($class == StripeEventHandler::class) {
                 continue;
@@ -109,7 +117,11 @@ class StripeWebhook implements Flushable
      */
     public static function flush()
     {
-        /** @var CacheInterface $cache */
+        /**
+* 
+         *
+ * @var CacheInterface $cache 
+*/
         $cache = Injector::inst()->get(CacheInterface::class . '.stripeWebhook');
         $cache->delete('eventHandlers');
     }
