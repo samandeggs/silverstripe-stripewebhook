@@ -1,0 +1,7 @@
+---
+Name: vulcan-stripewebhook-routes
+After: framework/routes#coreroutes
+---
+SilverStripe\Control\Director:
+  rules:
+    'stripe-webhook//$Action/$ID/$Name': Vulcan\StripeWebhook\Controllers\StripeWebhookController

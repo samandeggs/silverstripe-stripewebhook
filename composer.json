@@ -1,0 +1,25 @@
+{
+  "name": "vulcandigital/silverstripe-stripewebhook",
+  "description": "A delegation interface for handling Stripe webhook events",
+  "type": "silverstripe-vendormodule",
+  "license": "BSD-3-Clause",
+  "authors": [
+    {
+      "name": "Reece Alexander",
+      "email": "reece@vulcandigital.co.nz"
+    }
+  ],
+  "require": {
+    "silverstripe/framework": "^4.0",
+    "stripe/stripe-php": "^6.3"
+  },
+  "require-dev": {
+    "phpunit/PHPUnit": "^5.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "Vulcan\\StripeWebhook\\": "src/"
+    }
+  },
+  "minimum-stability": "dev"
+}
