@@ -1,6 +1,9 @@
 # silverstripe-stripewebhook
 
-Fork from vulcandigital/silverstripe-stripewebhook to update their stripe requirements for my internal use.
+Fork from vulcandigital/silverstripe-stripewebhook to update its use in a few ways:
+
+-   Replace yml configuration with .env variables
+-   Updated version of `stripe/stripe-php` and updated composer.json
 
 This module is a Stripe webhook event handling delegation interface, a subclass can handle one or
 more event and an event can be handled by one or more subclass
@@ -8,13 +11,15 @@ more event and an event can be handled by one or more subclass
 ## Requirements
 
 -   silverstripe/framework: ^4
+-   stripe/stripe-php: ^7.43
 
 ## Configuration
 
-```yaml
-Vulcan\StripeWebhook\StripeWebhook:
-  secret_key: "your-live-secret-key"
-  endpoint_secret: "your-endpoint-live-secret-key
+replace `<key>`, and write within the `""`.
+
+```
+STRIPE_SECRET="<key>"
+STRIPE_WEBHOOK_SECRET="<key>"
 ```
 
 You can also use test keys and the webhook simulator will work fine with this module
