@@ -6,6 +6,7 @@ use Psr\SimpleCache\CacheInterface;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Config\Configurable;
 use SilverStripe\Core\Flushable;
+use SilverStripe\Core\Environment;
 use SilverStripe\Core\Injector\Injectable;
 use SilverStripe\Core\Injector\Injector;
 use Vulcan\StripeWebhook\Handlers\StripeEventHandler;
@@ -28,10 +29,10 @@ class StripeWebhook implements Flushable
      */
     public function getSecret()
     {
-        $key = $this->config()->get('secret_key');
+        $key = Environment::getEnv('STRIPE_SECRET');
 
         if (!$key) {
-            throw new \RuntimeException('$secret_key needs to be configured via YML');
+            throw new \RuntimeException('$secret_key needs to be configured via .env');
         }
 
         return $key;
@@ -43,10 +44,10 @@ class StripeWebhook implements Flushable
      */
     public function getEndpointSecret()
     {
-        $key = $this->config()->get('endpoint_secret');
+        $key = Environment::getEnv('STRIPE_WEBHOOK_SECRET');
 
         if (!$key) {
-            throw new \RuntimeException('$endpoint_secret needs to be configured via YML');
+            throw new \RuntimeException('$endpoint_secret needs to be configured via .env');
         }
 
         return $key;
@@ -60,9 +61,9 @@ class StripeWebhook implements Flushable
     public function getHandlers()
     {
         /**
-* 
+*
          *
- * @var CacheInterface $cache 
+ * @var CacheInterface $cache
 */
         $cache = Injector::inst()->get(CacheInterface::class . '.stripeWebhook');
 
@@ -74,9 +75,9 @@ class StripeWebhook implements Flushable
         $manifest = [];
 
         /**
-* 
+*
          *
- * @var StripeEventHandler $class 
+ * @var StripeEventHandler $class
 */
         foreach ($classes as $class) {
             if ($class == StripeEventHandler::class) {
@@ -118,9 +119,9 @@ class StripeWebhook implements Flushable
     public static function flush()
     {
         /**
-* 
+*
          *
- * @var CacheInterface $cache 
+ * @var CacheInterface $cache
 */
         $cache = Injector::inst()->get(CacheInterface::class . '.stripeWebhook');
         $cache->delete('eventHandlers');
